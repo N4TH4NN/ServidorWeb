@@ -23,16 +23,23 @@ apt-get install -y zip unzip
 
 #Etapa 06
 echo "6 -  Descompactando arquivo e copiando os arquivos descompactados cv-resumido.html e style.css"
-unzip 873219-690e1f604dc8ead2583589e1aee6f8a42040a035.zip
+unzip 690e1f604dc8ead2583589e1aee6f8a42040a035.zip 
 
-echo "7 - Apagundo o arquivo index.html que existe dentro do diretório /var/www/html/"
-rm /var/www/html/
-cs-resumido.html index.html
-echo "8 - renomear o arquivo cv-resumido.html para index.html"
+#Etapa 07
+echo "7 - Copiando cv-resumido e style.cc para a pasva /var/www/html"
+cd 873219-690e1f604dc8ead2583589e1aee6f8a42040a035
 
+cp cv-resumido.html /var/www/html/
 
-echo "Processo finalizado!"
+cp style.css /var/www/html/ 
 
+#Etapa 8
+echo "8 - Apagar o index e renomear o cv-resumido"
 
+cd /var/www/html/
+rm index.html
+mv cv-resumido.html index.html
 
-
+#Etapa 9 
+echo "inicando o servidor web Apache"
+/etc/init.d/apache2 start
